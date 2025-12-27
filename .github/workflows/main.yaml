@@ -28,3 +28,7 @@ jobs:
           push: true
           platforms: linux/arm64, linux/amd64
           tags: ${{ secrets.DOCKER_USERNAME }}/express-app:arm64
+
+      - name: Trigger Render deployment
+        run: |
+          curl -X POST "${{ secrets.RENDER_DEPLOY_HOOK }}"
